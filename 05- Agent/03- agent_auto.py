@@ -1,7 +1,7 @@
 import json
 from openai import OpenAI
 
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="")
 
 
 def get_weather(city:str):
