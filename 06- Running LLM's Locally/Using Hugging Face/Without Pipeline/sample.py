@@ -6,7 +6,6 @@
 !pip install transformers
 
 #This sets your Hugging Face token (so you can access restricted models like Gemma). You can get this token from your Hugging Face account.
-#This sets your Hugging Face token (so you can access restricted models like Gemma). You can get this token from your Hugging Face account.
 import os
 os.environ["HF_TOKEN"] = "hf_..."  
 
@@ -49,6 +48,7 @@ model = AutoModelForCausalLM.from_pretrained(
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Tells the model: "Here's the prompt. Now generate up to 25 new words (tokens) that follow."
+#Psas tokens into it
 gen_result = model.generate(tokenized["input_ids"], max_new_tokens=25)
 
 
@@ -57,12 +57,14 @@ gen_result = model.generate(tokenized["input_ids"], max_new_tokens=25)
 #------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #Converts the token IDs back into human-readable text.
-ouput = tokenizer.batch_decode(gen_result)
+output = tokenizer.batch_decode(gen_result)
 
-
+#So here we did pipeline wala work-> manually (tokenizing and de-tokenizing)
 
 #✅ Final Output
 #You’ll get something like:
-
 #["The capital of India is New Delhi. It is one of the largest..."]
 
+
+#NOTE-> WHY WE LEARNT THIS ? 
+#While doing fine tuning, u need to run LLM locally on your system so u can fine tune it.
