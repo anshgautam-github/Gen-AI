@@ -23,7 +23,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 #Shows how the tokenizer breaks the input sentence into token IDs + attention mask.
 print(tokenizer("Hello, how are you?"))
 print(tokenizer.get_vocab())
-input_tokens = tokenizer("Hello, how are you?")["input_ids"]
+input_tokens = tokenizer("Hello, how are you?")["input_ids"]  #yeh input_id -> when u print tokenizer thing, u get output, in that we get token as well as attention mask-> usmei se we only need input token , so we mentined there specifically
 print(input_tokens)
 
 
