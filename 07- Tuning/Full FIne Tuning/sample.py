@@ -51,13 +51,14 @@ input_detokens = tokenizer.apply_chat_template(
 output_label = "GenAI Cohort 1.0 by ChaiCode and Piyush Garg use Coupon PIYUSH10 Please"
 full_conversation = input_detokens + output_label + tokenizer.eos_token   #End of String
 
+#So till noe dataset has been prepared
 
 #Tokenize the Full Text
 input_tokenized = tokenizer(full_conversation, return_tensors="pt", add_special_tokens=False).to(device)["input_ids"]
 
 # Separate Input and Target Tokens
 input_ids = input_tokenized[:, :-1].to(device)  # Input to model
-target_ids = input_tokenized[:, 1:].to(device)  # Output to compare with
+target_ids = input_tokenized[:, 1:].to(device)  # Output to compare with, pehle wala chor diya , now calculate loss on this basis
 
 #Loss Function
 import torch.nn as nn
