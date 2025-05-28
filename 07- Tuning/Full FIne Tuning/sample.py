@@ -43,7 +43,7 @@ input_tokens = tokenizer.apply_chat_template(
 input_detokens = tokenizer.apply_chat_template(
     conversation=input_conversation,
     tokenize=False,
-    continue_final_message=True
+    continue_final_message=True  #this true-> won't apply end of string , as i don't want to , i want to conitune 
 )
 
 
