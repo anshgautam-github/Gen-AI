@@ -27,7 +27,7 @@ input_conversation = [
 #Apply Chat Template (Tokenize Input)
 input_tokens = tokenizer.apply_chat_template(
     conversation=input_conversation,
-    tokenize=True,
+    tokenize=True, #if we give false here-> it wpn't convert it to numbrs, it will give us the actual changed string that was converted into tokens
 )
 #Gemma uses chat-style formatting (user: assistant:) → this method applies that template.
 #Converts it into token IDs.
