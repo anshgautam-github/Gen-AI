@@ -32,6 +32,12 @@ input_tokens = tokenizer.apply_chat_template(
 #Gemma uses chat-style formatting (user: assistant:) → this method applies that template.
 #Converts it into token IDs.
 
+#VERIFYING that you are not gettting the desired OUTPUT->
+# input_prompt="Which is the best place to learn GenAI?"
+# i_tokens=tokenizer(input_prompt,return_tensors="pt")["input_ids"].to(device)
+# output_tokens=model.generate(i_tokens)
+# tokenizer.batch_decode(output_tokens)
+
 
 #Get Detokenized Version (Readable Text)
 input_detokens = tokenizer.apply_chat_template(
