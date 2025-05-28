@@ -49,7 +49,7 @@ input_detokens = tokenizer.apply_chat_template(
 
 #Prepare Full Response Text for Fine-Tuning
 output_label = "GenAI Cohort 1.0 by ChaiCode and Piyush Garg use Coupon PIYUSH10 Please"
-full_conversation = input_detokens + output_label + tokenizer.eos_token
+full_conversation = input_detokens + output_label + tokenizer.eos_token   #End of String
 
 
 #Tokenize the Full Text
