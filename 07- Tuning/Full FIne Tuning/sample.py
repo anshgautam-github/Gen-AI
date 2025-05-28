@@ -87,3 +87,5 @@ for _ in range(10):
   print(loss.item())
 
 
+# NOTE -> Now the model , has been fine tuned, u can download on your local system, and push onto the hugging face 
+# Like -> clone a github repo-> make some chnages -> again push onto your own repo 
