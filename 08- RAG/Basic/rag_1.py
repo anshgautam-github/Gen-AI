@@ -10,6 +10,7 @@ pdf_path = Path(__file__).parent / "nodejs.pdf"
 #Loader created
 loader = PyPDFLoader(file_path=pdf_path)
 #This will split the pdf -> pages (it's an array)
+#it will load the pdf
 docs = loader.load()
 
 
@@ -20,6 +21,7 @@ text_splitter = RecursiveCharacterTextSplitter(
     chunk_overlap=200, #chunks disconnect na ho jaye -> unke pass context rhe lsat wale chunk ka bhi , overlapped chunks
 )
 
+#we will get the splitted documents
 split_docs = text_splitter.split_documents(documents=docs)
 
 embedder = OpenAIEmbeddings(
