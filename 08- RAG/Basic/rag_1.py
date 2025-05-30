@@ -1,11 +1,15 @@
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 🧠 Step 0: Import Required Libraries
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 from pathlib import Path
 from langchain_community.document_loaders import PyPDFLoader  # For loading PDF content
 from langchain_text_splitters import RecursiveCharacterTextSplitter  # For splitting text into chunks
 from langchain_openai import OpenAIEmbeddings  # For creating text embeddings using OpenAI
 from langchain_qdrant import QdrantVectorStore  # For storing and retrieving vectors using Qdrant DB
 
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 🗂️ Step 1: Load the PDF File
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Set the path to your PDF file
 pdf_path = Path(__file__).parent / "nodejs.pdf"
@@ -16,8 +20,9 @@ loader = PyPDFLoader(file_path=pdf_path)
 # Load and split the PDF into pages (each page = one document initially)
 docs = loader.load()
 
-
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # ✂️ Step 2: Split the Documents into Uniform Chunks
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #now it's not good to break the pdf on basis of pages -> some pages have less data, while some have huge data, so some page content may go out of context range
 #so we will use a textSplitter here, here we are uniformly defining a chunk size of 1,000 words
@@ -40,7 +45,10 @@ print("SPLIT", len(split_docs));
 #NOtes ke mind map mei -> yaha tk we did data source, and chunking,
 #now ww have to do embeddings ->
 
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 🧠 Step 3: Generate Embeddings for Each Chunk
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # We’ll convert text chunks into embeddings (numeric vector representations)
 
 # Initialize OpenAI Embeddings (replace with your actual API key)
@@ -51,8 +59,10 @@ embedder = OpenAIEmbeddings(
 )
 #now ihave to embedding -> and store in the qdrant db
 
-
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 💾 Step 4: Store Embeddings in Qdrant Vector Database
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Vector DB lets us do similarity search efficiently.
 vector_store = QdrantVectorStore.from_documents(
     documents=[],  # Initially empty (you can load directly or add later)
@@ -68,7 +78,10 @@ print("Injection Part Done")
 
 #Now we are going in th retrieval part-> 
 
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 🔍 Step 5: Retrieve Relevant Chunks Using Similarity Search
+#--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # Now we query the vector store using a natural language question.
 
 # Load the same Qdrant collection for retrieval
