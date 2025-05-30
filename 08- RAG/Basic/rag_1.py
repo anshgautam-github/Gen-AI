@@ -7,7 +7,9 @@ from langchain_qdrant import QdrantVectorStore
 
 pdf_path = Path(__file__).parent / "nodejs.pdf"
 
+#Loader created
 loader = PyPDFLoader(file_path=pdf_path)
+#This will split the pdf -> pages (it's an array)
 docs = loader.load()
 
 text_splitter = RecursiveCharacterTextSplitter(
