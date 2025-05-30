@@ -12,6 +12,9 @@ loader = PyPDFLoader(file_path=pdf_path)
 #This will split the pdf -> pages (it's an array)
 docs = loader.load()
 
+
+#now it's not good to break the pdf on basis of pages -> some pages have less data, while some have huge data, so some page content may go out of context range
+#so we will use a textSplitter here, here we are uniformly defining a chunk size of 1,000 words
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=1000,
     chunk_overlap=200,
