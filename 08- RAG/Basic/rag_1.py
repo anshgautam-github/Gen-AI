@@ -17,7 +17,7 @@ docs = loader.load()
 #so we will use a textSplitter here, here we are uniformly defining a chunk size of 1,000 words
 text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=1000,
-    chunk_overlap=200,
+    chunk_overlap=200, #chunks disconnect na ho jaye -> unke pass context rhe lsat wale chunk ka bhi , overlapped chunks
 )
 
 split_docs = text_splitter.split_documents(documents=docs)
