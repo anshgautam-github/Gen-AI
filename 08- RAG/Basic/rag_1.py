@@ -1,9 +1,8 @@
 from pathlib import Path
-from langchain_community.document_loaders import PyPDFLoader
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_openai import OpenAIEmbeddings
-
-from langchain_qdrant import QdrantVectorStore
+from langchain_community.document_loaders import PyPDFLoader  # For loading PDF content
+from langchain_text_splitters import RecursiveCharacterTextSplitter  # For splitting text into chunks
+from langchain_openai import OpenAIEmbeddings  # For creating text embeddings using OpenAI
+from langchain_qdrant import QdrantVectorStore  # For storing and retrieving vectors using Qdrant DB
 
 pdf_path = Path(__file__).parent / "nodejs.pdf"
 
