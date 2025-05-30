@@ -20,6 +20,8 @@ text_splitter = RecursiveCharacterTextSplitter(
     chunk_size=1000,
     chunk_overlap=200, #chunks disconnect na ho jaye -> unke pass context rhe lsat wale chunk ka bhi , overlapped chunks
 )
+#here we are doing the dumbest thing ki character se split kr doh -> 1000 mei bhi context break ho jayega -> this is the naive solution  
+
 
 #we will get the splitted documents
 split_docs = text_splitter.split_documents(documents=docs)
@@ -63,3 +65,5 @@ search_result = retriver.similarity_search(
 )
 
 print("Relevant Chunks", search_result)
+
+#AB yeh relevant chunks ko system prompt mei dalenge and we will get the output 
