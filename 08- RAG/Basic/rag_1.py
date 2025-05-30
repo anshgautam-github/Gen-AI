@@ -28,6 +28,9 @@ split_docs = text_splitter.split_documents(documents=docs)
 print("DOCS", len(docs));
 print("SPLIT", len(split_docs));
 
+#NOtes ke mind map mei -> yaha tk we did data source, and chunking,
+#now ww have to do embeddings ->
+
 embedder = OpenAIEmbeddings(
     model="text-embedding-3-large",
     api_key=""
