@@ -31,20 +31,26 @@ print("SPLIT", len(split_docs));
 #NOtes ke mind map mei -> yaha tk we did data source, and chunking,
 #now ww have to do embeddings ->
 
+#Embedder -> iske through we will do embeddings like a loder 
 embedder = OpenAIEmbeddings(
-    model="text-embedding-3-large",
+    model="text-embedding-3-large", #OpenAI embedding models are diff thna usual 
     api_key=""
 )
+#now ihave to embedding -> and store in the qdrant db
 
-# vector_store = QdrantVectorStore.from_documents(
-#     documents=[],
-#     url="http://localhost:6333",
-#     collection_name="learning_langchain",
-#     embedding=embedder
-# )
 
-# vector_store.add_documents(documents=split_docs)
-print("Injection Done")
+vector_store = QdrantVectorStore.from_documents(
+    documents=[],
+    url="http://localhost:6333",
+    collection_name="learning_langchain",  #like db has tables, we can give any name 
+    embedding=embedder
+)
+
+vector_store.add_documents(documents=split_docs)
+print("Injection Part Done")
+#ingestion tk ho gya kaam
+
+#Now we are going in th retrieval part-> 
 
 retriver = QdrantVectorStore.from_existing_collection(
     url="http://localhost:6333",
@@ -53,7 +59,7 @@ retriver = QdrantVectorStore.from_existing_collection(
 )
 
 search_result = retriver.similarity_search(
-    query="What is FS Module?"
+    query="What is FS Module?"  #yeh internally iski bhi vector embeddingbnayaega , so yeh embed ko vector store se search kr layega and give us the relevant chunks
 )
 
 print("Relevant Chunks", search_result)
