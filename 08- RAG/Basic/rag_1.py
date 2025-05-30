@@ -59,7 +59,7 @@ retriver = QdrantVectorStore.from_existing_collection(
 )
 
 search_result = retriver.similarity_search(
-    query="What is FS Module?"  #yeh internally iski bhi vector embeddingbnayaega , so yeh embed ko vector store se search kr layega and give us the relevant chunks
+    query="What is FS Module?"  #yeh internally iski bhi vector embeddingbnayaega , so yeh embed ko vector store se similarity search kr layega and give us the relevant chunks
 )
 
 print("Relevant Chunks", search_result)
