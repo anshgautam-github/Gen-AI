@@ -24,6 +24,10 @@ text_splitter = RecursiveCharacterTextSplitter(
 #we will get the splitted documents
 split_docs = text_splitter.split_documents(documents=docs)
 
+#we can do this for finding the length of the doc and the chunk
+print("DOCS", len(docs));
+print("SPLIT", len(split_docs));
+
 embedder = OpenAIEmbeddings(
     model="text-embedding-3-large",
     api_key=""
